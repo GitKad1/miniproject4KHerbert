@@ -20,3 +20,5 @@ This applies the migrations.
 
 python manage.py createsuperuser
 This creates the administrator profile for the admin side of the website.
+
+The superuser will need to input pizza toppings that can be ordered by customers in admin.
