@@ -6,7 +6,11 @@
         <form id= 'register' method="post">
             {% csrf_token %}
             {{ form.as_p }}
+            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Password Facts
+            </button>
             <button type="submit">Register</button>
         </form>
     </div>
 {% endblock %}
+
