@@ -1,0 +1,17 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Available Pizzas</h2>
+  <form method="post" action="{% url 'place_order' %}">
+    {% csrf_token %}
+    <label for="pizza">Select Pizza:</label>
+    <select name="pizza" id="pizza">
+      {% for pizza in pizzas %}
+        <option value="{{ pizza.topping }}">{{ pizza.topping }} - ${{ pizza.price }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit">Order</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Order History</h2>
+  {% if orders %}
+    <ul>
+      {% for order in orders %}
+        <li>{{ order }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No orders yet.</p>
+  {% endif %}
+  <a href="{% url 'orderPizza' %}">Order Pizza</a>
+{% endblock %}

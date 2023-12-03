@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Order Pizza{% endblock %}</title>
+    <!-- Add your CSS links or stylesheets here -->
+</head>
+<body>
+    <header>
+        <h1>{% block header %}Pizza Ordering App{% endblock %}</h1>
+        <nav>
+            <ul>
+                 {% if user.is_authenticated %}
+                    <li>{{user.username}}</li>
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                {% else %}
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- ... (existing code) ... -->
+</body>
+</html>
