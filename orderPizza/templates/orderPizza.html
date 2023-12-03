@@ -3,8 +3,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Available Pizzas</h2>
-  <form method="post" action="{% url 'place_order' %}">
+     <div id="wrapper2">
+  <h2 id="title">Available Pizzas</h2>
+  <form id="myOrder" method="post" action="{% url 'place_order' %}">
     {% csrf_token %}
     <label for="pizza">Select Pizza:</label>
     <select name="pizza" id="pizza">
@@ -14,4 +15,5 @@
     </select>
     <button type="submit">Order</button>
   </form>
+      </div>
 {% endblock %}

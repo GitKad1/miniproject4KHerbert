@@ -8,6 +8,7 @@ from django.contrib.auth import login, authenticate, logout
 from .models import Order, Pizza
 import datetime
 
+
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -17,10 +18,11 @@ def register(request):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('login')  # Replace 'home' with the URL name of your home page
+            return redirect('../')  # Replace 'home' with the URL name of your home page
     else:
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
+
 
 def user_login(request):
     if request.method == 'POST':
@@ -31,7 +33,7 @@ def user_login(request):
             user = authenticate(username=username, password=password)
             if user:
                 login(request, user)
-                return redirect('orderIndex')  # Replace 'home' with the URL name of your home page
+                return redirect('orderIndex')
     else:
         form = AuthenticationForm()
     return render(request, 'registration/login.html', {'form': form})
@@ -41,6 +43,7 @@ def user_login(request):
 def order_index(request):
     orders = Order.objects.filter(user=request.user).order_by('-date')
     return render(request, 'orderIndex.html', {'orders': orders})
+
 
 @login_required
 def order_pizza(request):
@@ -60,6 +63,9 @@ def place_order(request):
 
     return redirect('orderIndex')
 
+
 def user_logout(request):
     logout(request)
-    return redirect('login')
+    return redirect('../')
+
+

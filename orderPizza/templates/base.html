@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'orderPizza/styles.css' %}">
     <title>{% block title %}Order Pizza{% endblock %}</title>
     <!-- Add your CSS links or stylesheets here -->
 </head>
@@ -24,7 +26,5 @@
     <main>
         {% block content %}{% endblock %}
     </main>
-
-    <!-- ... (existing code) ... -->
 </body>
 </html>

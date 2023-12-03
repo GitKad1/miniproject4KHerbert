@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Order History</h2>
-  {% if orders %}
-    <ul>
-      {% for order in orders %}
-        <li>{{ order }}</li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No orders yet.</p>
-  {% endif %}
-  <a href="{% url 'orderPizza' %}">Order Pizza</a>
+    <div id="wrapper">
+        <h2 id = 'title'>Order History</h2>
+        <a href="{% url 'orderPizza' %}">Order Pizza</a>
+        {% if orders %}
+        <ul>
+            {% for order in orders %}
+                <li>
+                    <span>{{ order.topping }}</span>
+                    <span>${{ order.price }}</span>
+                    <span>Ordered on: {{ order.get_date }}</span>
+                    <span> at {{ order.get_time }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No orders yet.</p>
+        {% endif %}
+    </div>
 {% endblock %}

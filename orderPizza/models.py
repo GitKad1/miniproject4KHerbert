@@ -17,7 +17,6 @@ class UserProfile(models.Model):
     user = models.OneToOneField(DjangoUser, on_delete=models.CASCADE)
     unique_id = models.CharField(max_length=10, unique=True, blank=True)
 
-
     def __str__(self):
         return f"Profile of {self.username}"
 
@@ -30,3 +29,9 @@ class Order(models.Model):
 
     def __str__(self):
         return f"{self.user.username}'s order ({self.date.date()}): {self.topping} - ${self.price}"
+
+    def get_date(self):
+        return f"{self.date.date()}"
+
+    def get_time(self):
+        return f"{self.date.strftime('%H:%M')}"
